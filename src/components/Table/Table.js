@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 
 import { HEAD } from "../../variables";
 import TableRow from "./TableRow";

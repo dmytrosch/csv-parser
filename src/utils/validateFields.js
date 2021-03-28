@@ -1,5 +1,8 @@
-import validator from 'validator';
+import validator from "validator";
 
-function validatePhoneNumber(number){
-   return validator.isMobilePhone(number)
-}
+const object = {
+    email: (string) => validator.isEmail(string),
+    
+};
+
+export default object;

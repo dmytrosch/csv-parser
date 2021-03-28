@@ -15,8 +15,8 @@ export default function TableRow({ row: item, arr }) {
 
     return (
         <tr>
-            <TableCeil column="">{item.id}</TableCeil>
-            <TableCeil column="">{item.fullName}</TableCeil>
+            <TableCeil>{item.id}</TableCeil>
+            <TableCeil>{item.fullName}</TableCeil>
             <TableCeil
                 column="phone"
                 isDublicated={dublicatedField === "phone"}
