@@ -9,7 +9,6 @@ export default function TableCeil({ children, column, isDublicated }) {
             return;
         }
         if (column && children) {
-            console.log(validateFields[column], "func");
             const isValid = validateFields[column](children);
             !isValid && setIsInvalid(true);
         }

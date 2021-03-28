@@ -14,7 +14,6 @@ function App() {
             setAlert(true);
             return;
         }
-        alert && setAlert(false);
         Papa.parse(cvs, {
             dynamicTyping: true,
             complete: (result) => setFile(result.data),
@@ -22,6 +21,7 @@ function App() {
     };
     useEffect(() => {
         if (!file) return;
+        alert && setAlert(false);
         const isValidHead = validateHead(file[0]);
         if (!isValidHead) {
             setAlert(true);
@@ -45,7 +45,6 @@ function App() {
     return (
         <div>
             <input type="file" onChange={uploadFileHandler} />
-            <div>{JSON.stringify(file)}</div>
             {!alert && file && <Table data={content} />}
             {alert && <p>Wrong file</p>}
         </div>
