@@ -32,7 +32,15 @@ function App() {
             newArray.pop();
         }
         newArray.shift();
-        const normalizedData = normalizeDataToObject(newArray, setAlert);
+        const normalizedData = normalizeDataToObject(newArray);
+        const isRequiredFieldsExist = normalizedData.every((el) => {
+            console.log(el);
+            return el.fullName && el.email && el.phone;
+        });
+        if (!isRequiredFieldsExist) {
+            setAlert(true);
+            return;
+        }
         setContent(normalizedData);
     }, [file, setAlert]);
     return (
