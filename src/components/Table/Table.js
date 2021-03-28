@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import checkDublicated from "../../utils/checkIsDublicated";
+import React, { useCallback } from "react";
 
 import { HEAD } from "../../variables";
+import TableRow from "./TableRow";
 
 export default function Table({ data }) {
-    
     return (
         <table>
             <thead>
@@ -18,21 +17,8 @@ export default function Table({ data }) {
             </thead>
             <tbody>
                 {data &&
-                    data.map((item) => (
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.fullName}</td>
-                            <td>{item.phone}</td>
-                            <td>{item.email}</td>
-                            <td>{item.age}</td>
-                            <td>{item.experience}</td>
-                            <td>{item.yearlyIncome}</td>
-                            <td>{item.hasChildren}</td>
-                            <td>{item.licenseStates}</td>
-                            <td>{item.expirationDate}</td>
-                            <td>{item.licenseNumber}</td>
-                            <td>{checkDublicated(data, item)}</td>
-                        </tr>
+                    data.map((item, _, arr) => (
+                        <TableRow key={item.id} row={item} arr={arr} />
                     ))}
             </tbody>
         </table>

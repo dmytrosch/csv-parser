@@ -33,10 +33,9 @@ function App() {
         }
         newArray.shift();
         const normalizedData = normalizeDataToObject(newArray);
-        const isRequiredFieldsExist = normalizedData.every((el) => {
-            console.log(el);
-            return el.fullName && el.email && el.phone;
-        });
+        const isRequiredFieldsExist = normalizedData.every(
+            (el) => el.fullName && el.email && el.phone
+        );
         if (!isRequiredFieldsExist) {
             setAlert(true);
             return;

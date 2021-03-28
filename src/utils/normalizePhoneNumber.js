@@ -1,5 +1,3 @@
-import phone from "phone";
-
 export default function normalizePhoneNumber(number) {
     const stringNumber = number.toString();
     if (stringNumber.length === 10) {

@@ -8,7 +8,7 @@ export default function normalizeDataToObject(array) {
         obj.fullName = el[0] && el[0].trim();
         const phone = el[1];
         obj.phone = normalizePhoneNumber(phone);
-        obj.email = el[2] && el[2].trim();
+        obj.email = el[2] && el[2].toLowerCase().trim();
         obj.age = el[3];
         obj.experience = el[4];
         obj.yearlyIncome = el[5];

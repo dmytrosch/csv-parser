@@ -1,9 +1,20 @@
 export default function checkIsDublicated(array, item) {
-    const dublicated = array.filter(
-        (el) =>
-            el.id !== item.id &&
-            (el.phone === item.phone ||
-                el.email.toLowerCase() === item.email.toLowerCase())
-    );
-    return dublicated.length ? dublicated.map((el) => el.id).join(",") : null;
+    let dublicatedField;
+    const dublicated = array.filter((el) => {
+        if (el.id === item.id) {
+            return false;
+        }
+        if (el.phone === item.phone) {
+            dublicatedField = "phone";
+            return true;
+        }
+        if (el.email === item.email) {
+            dublicatedField = "email";
+            return true;
+        }
+        return false;
+    });
+    return dublicated.length
+        ? [dublicated.map((el) => el.id).join(","), dublicatedField]
+        : null;
 }
