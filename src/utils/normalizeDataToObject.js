@@ -7,7 +7,7 @@ export default function normalizeDataToObject(index, array) {
     obj.age = array[3];
     obj.experience = array[4];
     obj.yearlyIncome = array[5];
-    obj.hasChildren = array[6].toString();
+    obj.hasChildren = array[6].toString().toUpperCase();
     obj.licenseStates = array[7];
     obj.expirationDate = array[8];
     obj.licenseNumber = array[9];

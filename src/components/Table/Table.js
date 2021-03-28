@@ -23,10 +23,26 @@ export default function Table({ data }) {
                 <tr>
                     <th>id</th>
                     {head && head.map((el) => <th key={el}>{el}</th>)}
+                    <th>Dublicated with</th>
                 </tr>
             </thead>
             <tbody>
-                {content && content.map((item) => <tr key={item[0]}></tr>)}
+                {content &&
+                    content.map((item) => (
+                        <tr key={item.id}>
+                            <td>{item.id}</td>
+                            <td>{item.fullName}</td>
+                            <td>{item.phone}</td>
+                            <td>{item.email}</td>
+                            <td>{item.age}</td>
+                            <td>{item.experience}</td>
+                            <td>{item.yearlyIncome}</td>
+                            <td>{item.hasChildren}</td>
+                            <td>{item.licenseStates}</td>
+                            <td>{item.expirationDate}</td>
+                            <td>{item.licenseNumber}</td>
+                        </tr>
+                    ))}
             </tbody>
         </table>
     );
