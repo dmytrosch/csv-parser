@@ -32,10 +32,10 @@ export default function TableRow({ row: item, arr }) {
             <TableCeil column="age">{item.age}</TableCeil>
             <TableCeil column="experience">{item.experience}</TableCeil>
             <TableCeil column="yearlyIncome">{item.yearlyIncome}</TableCeil>
-            <TableCeil >{item.hasChildren}</TableCeil>
+            <TableCeil column="hasChildren">{item.hasChildren}</TableCeil>
             <TableCeil column="licenseStates">{item.licenseStates}</TableCeil>
             <TableCeil column="expirationDate">{item.expirationDate}</TableCeil>
-            <TableCeil column="">{item.licenseNumber}</TableCeil>
+            <TableCeil column="licenseNumber">{item.licenseNumber}</TableCeil>
             <TableCeil>{dublicatedIds}</TableCeil>
         </tr>
     );

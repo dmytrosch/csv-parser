@@ -1,4 +1,5 @@
 import validator from "validator";
+const { isValidStateInput } = require("usa-state-validator");
 
 const object = {
     currentAge: null,
@@ -23,9 +24,16 @@ const object = {
         const isDateMoreThanCurrent = new Date(date) > new Date();
         return isDateValid && isDateMoreThanCurrent;
     },
-    licenseStates: (string) => {
-        
-    }
+    licenseStates: (states) => {
+        if (states.includes("|")) {
+            const arr = states.split("|");
+            return arr.every((state) => isValidStateInput(state));
+        }
+        return isValidStateInput(states);
+    },
+    hasChildren: (boolead) => validator.isBoolean(boolead.toLowerCase()),
+    licenseNumber: (string) =>
+        validator.matches(string, /^[a-zA-Z0-9]+$/) && string.length === 6,
 };
 
 export default object;
