@@ -1,24 +1,10 @@
 import React, { useEffect, useState } from "react";
-import normalizeDataToObject from "../../utils/normalizeDataToObject";
-import validateHead from "../../utils/validateHead";
+import checkDublicated from "../../utils/checkIsDublicated";
+
 import { HEAD } from "../../variables";
 
-export default function Table({ data, setAlert }) {
-    const [content, setContent] = useState(null);
-    useEffect(() => {
-        const isValidHead = validateHead(data[0]);
-        if (!isValidHead) {
-            setAlert(true);
-            return;
-        }
-        const newArray = [...data];
-        newArray.pop();
-        newArray.shift();
-        const normalizedData = newArray.map((el, index) =>
-            normalizeDataToObject(index, el)
-        );
-        setContent(normalizedData);
-    }, [data, setAlert]);
+export default function Table({ data }) {
+    
     return (
         <table>
             <thead>
@@ -31,8 +17,8 @@ export default function Table({ data, setAlert }) {
                 </tr>
             </thead>
             <tbody>
-                {content &&
-                    content.map((item) => (
+                {data &&
+                    data.map((item) => (
                         <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.fullName}</td>
@@ -45,6 +31,7 @@ export default function Table({ data, setAlert }) {
                             <td>{item.licenseStates}</td>
                             <td>{item.expirationDate}</td>
                             <td>{item.licenseNumber}</td>
+                            <td>{checkDublicated(data, item)}</td>
                         </tr>
                     ))}
             </tbody>
