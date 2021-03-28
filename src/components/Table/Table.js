@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import normalizeDataToObject from "../../utils/normalizeDataToObject";
+import validateHead from "../../utils/validateHead";
+import { HEAD } from "../../variables";
 
-export default function Table({ data }) {
-    const [head, setHead] = useState(null);
+export default function Table({ data, setAlert }) {
     const [content, setContent] = useState(null);
-    const newArray = [...data];
-    newArray.pop();
-    newArray.shift().map((el, index) => [index + 1, ...el]);
     useEffect(() => {
-        setHead(data[0]);
+        const isValidHead = validateHead(data[0]);
+        if (!isValidHead) {
+            setAlert(true);
+            return;
+        }
         const newArray = [...data];
         newArray.pop();
         newArray.shift();
@@ -16,13 +18,15 @@ export default function Table({ data }) {
             normalizeDataToObject(index, el)
         );
         setContent(normalizedData);
-    }, [data]);
+    }, [data, setAlert]);
     return (
         <table>
             <thead>
                 <tr>
                     <th>id</th>
-                    {head && head.map((el) => <th key={el}>{el}</th>)}
+                    {HEAD.map((el) => (
+                        <th key={el}>{el}</th>
+                    ))}
                     <th>Dublicated with</th>
                 </tr>
             </thead>
