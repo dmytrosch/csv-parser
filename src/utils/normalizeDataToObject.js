@@ -11,7 +11,7 @@ export default function normalizeDataToObject(array) {
         obj.email = el[2] && el[2].toLowerCase().trim();
         obj.age = el[3];
         obj.experience = el[4];
-        obj.yearlyIncome = el[5];
+        obj.yearlyIncome = el[5].toFixed(2);
         obj.hasChildren = el[6] ? el[6].toString().toUpperCase() : "FALSE";
         obj.licenseStates = el[7] && el[7].trim();
         obj.expirationDate = el[8] && el[8].trim();
