@@ -1,6 +1,6 @@
 export default function checkIsDublicated(array, item) {
     let dublicatedField;
-    const dublicated = array.filter((el) => {
+    const dublicated = array.find((el) => {
         if (el.id === item.id) {
             return false;
         }
@@ -14,7 +14,5 @@ export default function checkIsDublicated(array, item) {
         }
         return false;
     });
-    return dublicated.length
-        ? [dublicated.map((el) => el.id).join(","), dublicatedField]
-        : null;
+    return dublicated ? [dublicated.id, dublicatedField] : null;
 }

@@ -3,14 +3,14 @@ import TableCeil from "./TableCeil";
 import checkIsDublicated from "../../utils/checkIsDublicated";
 
 export default function TableRow({ row: item, arr }) {
-    const [dublicatedIds, setDublicatedIds] = useState(null);
+    const [dublicatedId, setDublicatedIds] = useState(null);
     const [dublicatedField, setDublicatedField] = useState(null);
     useEffect(() => {
-        const dublicates = checkIsDublicated(arr, item);
-        if (!dublicates) return;
-        const [ids, field] = dublicates;
+        const dublicate = checkIsDublicated(arr, item);
+        if (!dublicate) return;
+        const [id, field] = dublicate;
         setDublicatedField(field);
-        setDublicatedIds(ids);
+        setDublicatedIds(id);
     }, [item, arr]);
 
     return (
@@ -36,7 +36,7 @@ export default function TableRow({ row: item, arr }) {
             <TableCeil column="licenseStates">{item.licenseStates}</TableCeil>
             <TableCeil column="expirationDate">{item.expirationDate}</TableCeil>
             <TableCeil column="licenseNumber">{item.licenseNumber}</TableCeil>
-            <TableCeil>{dublicatedIds}</TableCeil>
+            <TableCeil>{dublicatedId}</TableCeil>
         </tr>
     );
 }
