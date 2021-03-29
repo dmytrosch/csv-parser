@@ -8,10 +8,15 @@ const object = {
         this.currentAge = number;
         return number >= 21 && validator.isInt(number.toString());
     },
-    phone: (string) => validator.isMobilePhone(string),
+    phone: (string) => validator.isMobilePhone(string, "en-US"),
     experience: function (string) {
         const number = Number(string);
-        return number >= 0 && number <= this.currentAge;
+        if (!this.currentAge && number >= 0) {
+            return true;
+        }
+        const isValid = number >= 0 && number <= this.currentAge;
+        this.currentAge = null;
+        return isValid;
     },
     yearlyIncome: (decimalString) =>
         Number(decimalString) >= 0 &&
