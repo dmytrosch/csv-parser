@@ -44,9 +44,18 @@ function App() {
     }, [file, setAlert]);
     return (
         <div>
-            <input type="file" onChange={uploadFileHandler} />
+            <input
+                type="file"
+                onChange={uploadFileHandler}
+                className="upload"
+            />
+
             {!alert && file && <Table data={content} />}
-            {alert && <p>Wrong file</p>}
+            {alert && (
+                <div className="alert">
+                    <span className="alert-text">Wrong file</span>
+                </div>
+            )}
         </div>
     );
 }

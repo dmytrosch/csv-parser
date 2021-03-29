@@ -23,3 +23,25 @@ th:first-child,
 td:first-child {
     text-align: left;
 }
+.upload {
+    width: 200px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #afcde7;
+}
+.alert {
+    margin: 0 auto;
+    width: 450px;
+    height: 75px;
+    background-color: rgb(228, 110, 110);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alert-text{
+    height: 30px;
+    color: aliceblue;
+    font-size: 22px;
+    text-align: center;
+    vertical-align: middle;
+}
